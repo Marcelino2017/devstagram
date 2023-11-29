@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use DragonCode\Support\Facades\Helpers\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -21,11 +22,13 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
+        $this->request->add(['username' => Str::slug($this->username)]);
+
         return [
             'name'     => 'required',
             'username' => 'required|unique:users,username|min:3|max:30',
             'email'    => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|min:6'
         ];
     }
 }
