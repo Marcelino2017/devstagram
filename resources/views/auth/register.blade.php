@@ -98,7 +98,7 @@
                         font-bold"
                     >Password</label>
                     <input
-                        type="text"
+                        type="password"
                         id="password"
                         name="password"
                         placeholder="Password de Registro"
@@ -126,7 +126,7 @@
                         font-bold"
                     >Repetir Password</label>
                     <input
-                        type="text"
+                        type="password"
                         id="password_confirmation"
                         placeholder="Repite Tu Password"
                         class="border p-3 w-full rounded-lg

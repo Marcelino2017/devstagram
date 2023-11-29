@@ -15,6 +15,6 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        dd($request);
+        dd("creando...");
     }
 }
