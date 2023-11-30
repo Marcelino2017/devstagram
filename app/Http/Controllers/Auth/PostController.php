@@ -15,6 +15,8 @@ class PostController extends Controller
 
     public function index(User $user)
     {
-        return view('dashboar');
+        return view('dashboar',[
+            'user' => $user
+        ]);
     }
 }

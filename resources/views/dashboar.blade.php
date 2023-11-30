@@ -12,7 +12,7 @@
             </div>
             <div class="md:w-8/12 lg:w-6/12 px-5">
                 <p class="text-gray-700 text-2xl">
-                    {{ auth()->user()->name }}
+                    {{ $user->name }}
                 </p>
             </div>
         </div>
