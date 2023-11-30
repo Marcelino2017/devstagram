@@ -30,4 +30,5 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/dashboar', [PostController::class, 'index'])->name('posts.index');
+//este endpoint nos permitira saber tener una url con username del user
+Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
