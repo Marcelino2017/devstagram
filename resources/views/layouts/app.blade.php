@@ -27,7 +27,7 @@
 
                             Crear
                         </a>
-                        <a href="{{ route('login') }}" class="font-bold uppercase text-gray-600 text-sm ">
+                        <a href="{{ route('posts.index', auth()->user()->username) }}" class="font-bold uppercase text-gray-600 text-sm ">
                             Hola:
                             <span class="font-normal">
                                 {{ auth()->user()->username }}
