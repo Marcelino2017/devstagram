@@ -32,3 +32,4 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 //este endpoint nos permitira saber tener una url con username del user
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
