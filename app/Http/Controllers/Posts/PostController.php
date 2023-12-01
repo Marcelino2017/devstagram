@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -20,8 +20,13 @@ class PostController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
         return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        dd("creando publicaion...");
     }
 }
