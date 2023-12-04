@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\PostController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Images\ImageController;
+use App\Http\Controllers\Posts\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,5 +34,6 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 //este endpoint nos permitira saber tener una url con username del user
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::post('/images', [ImageController::class, 'store'])->name('image.store');

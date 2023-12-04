@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Posts\PostStoreRequest;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,8 +27,15 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        dd("creando publicaion...");
+        Post::create([
+            'title'       => $request->title,
+            'description' => $request->description,
+            'image'       => $request->image,
+            'user_id'     => auth()->user()->id,
+        ]);
+
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
