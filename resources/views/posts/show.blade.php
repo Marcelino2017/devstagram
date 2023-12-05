@@ -30,7 +30,13 @@
                         Agrega un Nuevo Comentaria
                     </p>
 
-                    <form action="{{ route('comments.store', ['post' => $post, 'user'=> $user]) }}" method="POST">
+                    @if (session('message'))
+                        <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase fontbold">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('comments.store', ['user' => $user, 'post' => $post]) }}" method="POST">
                         @csrf
                         <div class="mb-5">
                             <label
@@ -64,7 +70,7 @@
                             class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer
                             uppercase font-bold w-full p-3 text-white rounded-lg"
                         />
-                </form>
+                    </form>
                 @endauth
             </div>
         </div>
