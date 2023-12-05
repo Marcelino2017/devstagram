@@ -217,5 +217,7 @@ return [
         'updated_at'               => 'actualizado el',
         'username'                 => 'usuario',
         'year'                     => 'año',
+        'comment'                  => 'comentario',
+        'comments'                 => 'comentarios',
     ],
 ];
