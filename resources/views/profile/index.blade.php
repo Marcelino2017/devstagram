@@ -46,7 +46,7 @@
                         for="image"
                         class="mb-2 block uppercase text-gray-500
                         font-bold"
-                    >Nombre</label>
+                    >Imagen de Perfil</label>
                     <input
                         type="file"
                         id="image"
