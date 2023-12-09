@@ -28,24 +28,24 @@ class ProfileController extends Controller
         ]);
 
         if ($request->image) {
-            $image = $request->file('file');
+            $image = $request->file('image');
 
             $imageName = Str::uuid().".".$image->extension();
 
             $imageServer = Image::make($image);
             $imageServer->fit(1000,1000);
 
-            $imagePath = public_path('uploads').'/'.$imageName;
+            $imagePath = public_path('profiles').'/'.$imageName;
             $imageServer->save($imagePath);
         }
 
         $user = User::find(auth()->user()->id);
 
         $user->username = $request->username;
-        $user->image = $imageName ?? null;
+        $user->image = $imageName ?? auth()->user()->image ?? null;
         $user->save();
 
-        return redirect()->route('post.index', $user->username);
+        return redirect()->route('posts.index', $user->username);
 
     }
 }
