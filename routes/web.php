@@ -7,6 +7,7 @@ use App\Http\Controllers\Comments\CommentController;
 use App\Http\Controllers\Images\ImageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Posts\PostController;
+use App\Http\Controllers\Profiles\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,3 +46,7 @@ Route::post('/images', [ImageController::class, 'store'])->name('image.store');
 
 Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
+
+
+Route::get('{user:username}/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('{user:username}/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
