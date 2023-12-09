@@ -32,7 +32,8 @@
                     @endauth
                 </div>
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
-                    0 <span class="font-normal">Segidores</span>
+                    {{ $user->followers->count() }}
+                    <span class="font-normal">@choice('seguidor|Segidores', $user->followers->count())</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
                     0 <span class="font-normal">Seguidos</span>
@@ -42,31 +43,34 @@
                 </p>
                 @auth
                     @if (auth()->user()->id != $user->id)
-                        <form
-                            action="{{ route('users.follow', $user) }}"
-                            method="POST"
-                        >
-                            @csrf
-                            <input
-                                type="submit"
-                                class="bg-blue-600 text-white uppercase
-                                rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
-                                value="seguir"
-                            />
-                        </form>
-                        <form
-                            action="{{ route('users.unfollow', $user) }}"
-                            method="POST"
-                        >
-                            @method('DELETE')
-                            @csrf
-                            <input
-                                type="submit"
-                                class="bg-red-600 text-white uppercase
-                                rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
-                                value="dejar de seguir"
-                            />
-                        </form>
+                        @if (!$user->following(auth()->user()))
+                            <form
+                                action="{{ route('users.follow', $user) }}"
+                                method="POST"
+                            >
+                                @csrf
+                                <input
+                                    type="submit"
+                                    class="bg-blue-600 text-white uppercase
+                                    rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
+                                    value="seguir"
+                                />
+                            </form>
+                        @else
+                            <form
+                                action="{{ route('users.unfollow', $user) }}"
+                                method="POST"
+                            >
+                                @method('DELETE')
+                                @csrf
+                                <input
+                                    type="submit"
+                                    class="bg-red-600 text-white uppercase
+                                    rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
+                                    value="dejar de seguir"
+                                />
+                            </form>
+                        @endif
                     @endif
                 @endauth
             </div>
