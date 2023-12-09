@@ -40,6 +40,35 @@
                 <p class="text-gray-800 text-sm mb-3 font-bold">
                     {{$user->posts->count() }} <span class="font-normal">Posts</span>
                 </p>
+                @auth
+                    @if (auth()->user()->id != $user->id)
+                        <form
+                            action="{{ route('users.follow', $user) }}"
+                            method="POST"
+                        >
+                            @csrf
+                            <input
+                                type="submit"
+                                class="bg-blue-600 text-white uppercase
+                                rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
+                                value="seguir"
+                            />
+                        </form>
+                        <form
+                            action=""
+                            method="POST"
+                        >
+                            @method('DELETE')
+                            @csrf
+                            <input
+                                type="submit"
+                                class="bg-blue-600 text-white uppercase
+                                rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
+                                value="dejar de seguir"
+                            />
+                        </form>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>
