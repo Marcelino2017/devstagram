@@ -34,6 +34,9 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+Route::get('{user:username}/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('{user:username}/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
+
 //este endpoint nos permitira saber tener una url con username del user
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
@@ -48,5 +51,3 @@ Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('posts
 Route::delete('posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
 
 
-Route::get('{user:username}/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
-Route::post('{user:username}/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
