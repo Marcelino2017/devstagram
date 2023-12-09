@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Comments\CommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\Images\ImageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Posts\PostController;
@@ -50,4 +51,5 @@ Route::post('/images', [ImageController::class, 'store'])->name('image.store');
 Route::post('posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
 
-
+Route::post('{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+Route::delete('{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
