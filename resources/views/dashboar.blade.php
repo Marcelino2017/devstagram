@@ -33,17 +33,18 @@
                 </div>
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
                     {{ $user->followers->count() }}
-                    <span class="font-normal">@choice('seguidor|Segidores', $user->followers->count())</span>
+                    <span class="font-normal">@choice('Seguidor|Segidores', $user->followers->count())</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0 <span class="font-normal">Seguidos</span>
+                    {{ $user->followings->count() }}
+                    <span class="font-normal">Siguiendo</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
                     {{$user->posts->count() }} <span class="font-normal">Posts</span>
                 </p>
                 @auth
                     @if (auth()->user()->id != $user->id)
-                        @if (!$user->following(auth()->user()))
+                        @if (!$user->checkIfUserIsFollowing(auth()->user()))
                             <form
                                 action="{{ route('users.follow', $user) }}"
                                 method="POST"
