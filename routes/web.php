@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Comments\CommentController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\Homes\HomeController;
 use App\Http\Controllers\Images\ImageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Posts\PostController;
@@ -22,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class)->name('home');
 
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');

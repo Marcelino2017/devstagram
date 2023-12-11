@@ -14,7 +14,9 @@
             <div
                 class="container mx-auto flex
                 justify-between items-center">
-                <h1 class="text-3xl font-black">DevStagram</h1>
+                <a href="{{ route('home') }}" class="text-3xl font-black">
+                    DevStagram
+                </a>
                 {{-- para cuando esta autetniticado se muestra --}}
                 @auth
                     <nav class="gap-2">
