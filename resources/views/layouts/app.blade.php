@@ -8,6 +8,7 @@
         <title>DevStagram - @yield('title')</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @livewireStyles
     </head>
     <body class="bg-gray-100">
         <header class="p-5 border-b font-black">
@@ -70,6 +71,7 @@
             DevStagram - Todos los derechos reservados
             {{ now()->year}}
         </footer>
+        @livewireScripts
     </body>
 </html>
 
